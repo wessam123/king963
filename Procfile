@@ -1,1 +1,1 @@
-worker: node bat.js
+worker: node bot.js
