@@ -28,7 +28,7 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
   console.log('')
 });
 
-client.login(process.env.BOT_TOKEN);
+
 client.on('message', message => {
       if (message.author.bot) return;
       var prefix ="$$"
@@ -66,3 +66,7 @@ client.on('message', message => {
   
       }
   });
+
+
+
+client.login(process.env.BOT_TOKEN);
