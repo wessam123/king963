@@ -28,16 +28,28 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
   console.log('')
 });
 
-client.utility = {};
+client.on('message', message => { //invite
+    if (message.content.startsWith(prefix + "رابط")) {
+     if(!message.channel.guild) return;
+if (message.author.bot) return;
+        message.channel.createInvite({
+        thing: true,
+        maxUses: 0,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const Embed11 = new Discord.RichEmbed()
+        .setColor("#5016f3")
+        .setDescription("تم ارسال الرابط في الخاص")
+   .setFooter("The Capital  ",'https://cdn.discordapp.com/icons/476056375932354560/829c3d9c6392024aab121e24a8bce5ad.jpg?size=128')
+                   .setTimestamp()
+                message.channel.send('**تم الارسال رابط  السيرفر في الخاص**');
 
-fs.readdir('./Functions/', (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(f => {
-        const props = require(`./Functions/${f}`);
-        const name = f.split('.')[0];
-        client.utility[name] = props;
-    });
+
+      message.channel.sendEmbed(Embed11).then(message => {message.delete(3000)})
+      message.author.sendEmbed(Embed11)
+    }
 });
-
 
 client.login(process.env.BOT_TOKEN);
